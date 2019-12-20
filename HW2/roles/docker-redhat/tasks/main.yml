@@ -1,0 +1,21 @@
+---
+    - name: Install required system packages
+      yum: name={{ item }} state=latest update_cache=yes
+      loop: [ 'yum-utils', 'device-mapper-persistent-data', 'lvm2', 'ca-certificates', 'curl', 'software-properties-common', 'python3-pip', 'virtualenv', 'python3-setuptools']
+
+    - name: Add repository
+      yum_repository:
+        name: docker-ce
+        description: docker-ce YUM repo
+        baseurl: https://download.docker.com/linux/centos/docker-ce.repo
+      
+    - name: Update yum and install docker-ce
+      yum: update_cache=yes name=docker-ce state=latest
+      notify:
+        - restart docker
+
+    - name: add to docker group
+      user:
+        name: ec2-user
+        groups: docker
+        append: yes
