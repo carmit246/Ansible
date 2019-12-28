@@ -1,11 +1,12 @@
 ---
 - name: docker
-  hosts: redhat
+  hosts: all
   gather_facts: yes
   #remote_user: ec2-user
   become: yes
-  vars_files:
-    - /vars/vars.yml
+  #vars_files:
+   # - /vars/vars.yml
   roles:
-  - { role: docker-redhat, additional_users: additional_users, when: ansible_distribution == 'RedHat' }
-  - { role: docker-ubuntu, additional_users: additional_users, when: ansible_distribution == 'Ubuntu' }
+    - docker
+  #- { role: docker-redhat, additional_users: additional_users, when: ansible_distribution == 'RedHat' }
+  #- { role: docker-ubuntu, additional_users: additional_users, when: ansible_distribution == 'Ubuntu' }

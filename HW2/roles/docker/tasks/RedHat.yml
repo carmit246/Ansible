@@ -1,0 +1,39 @@
+---
+- name: Install required system packages
+  yum: name={{ item }} state=latest
+  with_items:
+   - 'yum-utils'
+   - 'device-mapper-persistent-data'
+   - 'lvm2'
+   - 'ca-certificates'
+   - 'curl'
+
+- name: Add Docker GPG key.
+  rpm_key:
+    key: https://download.docker.com/linux/centos/gpg
+    state: present
+    
+- name: Add Docker repo
+  get_url:
+    url: https://download.docker.com/linux/centos/docker-ce.repo
+    dest: /etc/yum.repos.d/docker-ce.repo
+  become: yes 
+
+- name: Add Docker repository.
+  get_url:
+    url: https://download.docker.com/linux/centos/docker-ce.repo
+    dest: '/etc/yum.repos.d/docker-ce.repo'
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Update yum and install docker-ce
+  yum: name=docker-ce state=latest
+  notify:
+    - restart docker
+
+- name: add to docker group
+  user:
+    name: ec2-user
+    groups: docker
+    append: yes
