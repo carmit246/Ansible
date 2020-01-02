@@ -7,6 +7,6 @@
   #vars_files:
    # - /vars/vars.yml
   roles:
-    - docker
+    - docker-multi-platform
   #- { role: docker-redhat, additional_users: additional_users, when: ansible_distribution == 'RedHat' }
   #- { role: docker-ubuntu, additional_users: additional_users, when: ansible_distribution == 'Ubuntu' }

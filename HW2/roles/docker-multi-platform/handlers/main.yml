@@ -1,2 +1,6 @@
 ---
-# handlers file for roles/docker-multi-platform
+- name: restart docker
+  service:
+    name: docker
+    state: restarted
+    
