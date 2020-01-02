@@ -4,8 +4,8 @@
   gather_facts: yes
   #remote_user: ec2-user
   become: yes
-  #vars_files:
-   # - /vars/vars.yml
+  vars_files:
+    - /home/carmit/Git-Repositories/Ansible/Ansible/HW2/roles/docker-multi-platform/vars/main.yml
   roles:
     - docker-multi-platform
   #- { role: docker-redhat, additional_users: additional_users, when: ansible_distribution == 'RedHat' }
