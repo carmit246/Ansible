@@ -32,10 +32,8 @@
   notify:
     - restart docker
 
-- name: add users to docker group
-  user:
-    name: '{{ item }}'
-    groups: docker
-    append: yes
-  with_items: '{{ docker_group_members }}'
-  when: docker_group_members is defined
+- name: add ec2-user to docker group
+    user:
+      name: ec2-user
+      groups: docker
+      append: yes
