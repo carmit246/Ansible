@@ -3,11 +3,11 @@
 Redhat_Docker_GPG_key: https://download.docker.com/linux/centos/gpg
 Redhat_Docker_repo: https://download.docker.com/linux/centos/docker-ce.repo
 Redhat_containerdio_url: https://download.docker.com/linux/centos/7/x86_64/stable/Packages/containerd.io-1.2.6-3.3.el7.x86_64.rpm
-#docker_group_members: 
- # - 'ec2-user'
+Redhat_docker_group_members: 
+  - 'ec2-user'
 
 # Ubuntu
 Ubuntu_Docker_GPG_key: https://download.docker.com/linux/ubuntu/gpg
-Ubuntu_Docker_repo: https://download.docker.com/linux/ubuntu
-Ubuntu_containerdio_url: https://download.docker.com/linux/centos/7/x86_64/stable/Packages/containerd.io-1.2.6-3.3.el7.x86_64.rpm
-
+Ubuntu_Docker_repo: https://download.docker.com/linux/ubuntu bionic stable
+Redhat_docker_group_members: 
+  - 'ubuntu'   

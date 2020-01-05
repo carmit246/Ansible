@@ -14,7 +14,7 @@
 
   - name: Add Docker Repository
     apt_repository:
-      repo: deb "{{ Ubuntu_Docker_repo }}" bionic stable
+      repo: deb "{{ Ubuntu_Docker_repo }}"
       #repo: deb https://download.docker.com/linux/ubuntu bionic stable
       state: present
     
